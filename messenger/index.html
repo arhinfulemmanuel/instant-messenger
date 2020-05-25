@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../plugins/jQuery/jquery.js"></script>
+    <script src="../plugins/jQuery-Plugin-For-Playing-Sounds-On-Events-Ion-Sound/js/ion.sound.js"></script>
+    <script src="../plugins/resize.js"></script>
+    <link rel="stylesheet" href="../index1.css">
+    <link rel="icon" href="../icons/09-chat2.png">
+    <title>PERN CHAT</title>
+</head>
+<body>
+    <form action="" id="logout_form" method="post">
+        <div class="frame">
+            <center>
+                <div class="messenger_header">
+                    <span style="font-size: 14px; float: left; margin-left: 2px; color: blue"> 
+                        Users online 
+                        <span id="online_users" style="display: none;padding: 5px; background: rgb(68, 68, 148); color: rgb(255, 255, 255); border-radius: 10px; font-weight: bold;" >
+                            
+                        </span>
+                    </span>
+                    PERN Chat
+                        <span class="logout"><button type="submit" name="logout" class="logout_btn">Logout</button></span>
+                    <hr>
+                </div>
+            </center>
+        </div>
+    </form>
+
+    <div class="mess_main_container">
+        <div id="div12">
+        </div>
+    </div>
+
+    <form action="" autocomplete="off" method="post">
+        <center>
+            <div class="input_message_field_container">
+                <input id="mess_pholder" name="message" type="text" class="input_message_field" placeholder="Enter your message here... (Press Enter to send)">
+            </div>
+        </center>
+    </form>
+
+    
+    
+</body>
+</html>
+
+<script>
+    
+
+    $(function () {
+
+        $(window).on("load", function () {
+            setTimeout(function () { 
+                $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+             }, 2500)
+        });
+
+        
+
+
+        //insert message into database when enter is press
+        $('#mess_pholder').keypress(function (e) { 
+            content = $(this).val();
+            if(event.keyCode == 13){
+                $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+                e.preventDefault();
+                if(content.length>0){
+                    $.post("insert.php", {
+                        content: content
+                    }, function (data) {
+                        //play sound when message is sent
+                        ion.sound.play("sent");
+                        $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+                    }
+                    );
+                    //empty input field after pressing enter
+                    $('#mess_pholder').val('');
+                }
+            }
+        });
+
+
+        //loading messages every 2.5 seconds
+            setInterval(function () {
+            var fetch = $('#div12').load("update.php")
+            $(".mess_main_container").append(fetch)
+        }, 2500)
+
+        //sound plugin settings
+        ion.sound({
+            sounds: [
+                { name: "new message" },
+                {name: "sent"}
+            ],
+
+            // main config
+            path: "sounds/",
+            preload: true,
+            multiplay: true,
+            volume: 0.7 // default volume is 10%
+        });
+
+
+
+        window.onbeforeunload = function () {
+            //make an ajax call here and modify your db
+
+            //$('#logout_form').trigger("submit")
+
+        }
+
+        setInterval(function () { 
+            newMessage();
+         },4000)
+
+
+        function newMessage() {
+            var previousInbox = $('div.message_recieve_container').length;
+            $('.mess_main_container').resize(function () {
+
+                var currentInbox = $('div.message_recieve_container').length;
+
+                if(previousInbox<currentInbox){
+                    ion.sound.play("new message");
+                    $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+                }
+                previousInbox = currentInbox;
+            })
+        }
+
+
+
+        $('#logout_form').submit(function (e) { 
+            e.preventDefault();
+            $.post("logout.php",{
+                logout: "logoutOk"
+            }, function () { 
+                location.reload()
+             })
+        });
+
+     })
+</script>
