@@ -1,0 +1,184 @@
+body{
+    padding: 0px;
+    margin: 0px;
+   
+}
+.main_container{
+    border-radius: 2px;
+    padding: 0px 10px 20px 0px;
+    box-shadow: 0px 0px 2px rgb(78, 77, 77);
+    max-width: 825px;
+    min-width: 300px;
+    width: 90%;
+    margin-top: 10%;
+    z-index: 1;
+    height: 350px;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(131, 127, 127);
+}
+.header{
+    padding: 20px 0px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.input_field{
+    width: 90%;
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(144, 142, 142);
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.btn_field{
+    margin-top: 25px;
+}
+.btn{
+    background: rgb(9, 134, 184);
+    color: white;
+    border: none;
+    font-size: 14px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.btn:hover{
+    background: rgb(8, 105, 143);
+}
+.messenger_header{
+    color: rgb(80, 78, 78);
+    font-size: 27px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    padding-top: 10px;
+    z-index: 1;
+    background: rgb(235, 235, 235);
+    height: 38px;
+}
+.mess_main_container{
+    box-shadow: 0px 0px 2px -2px rgb(78, 77, 77);
+    width: 99%;
+    overflow: auto;
+    height: auto;
+    padding: 50px 5px 70px 5px;
+    z-index: -1;
+}
+.message_recieve_container{
+    float: left;
+    width: 100%;
+    margin-bottom: 35px;
+}
+.message_recieve_container_main{
+    width: 40%;
+    padding: 7px 7px 7px 40px;
+    background: rgb(209, 208, 208);
+    font-size: 16px;
+    border-radius: 0px 5px 5px 40px;
+    overflow-wrap: break-word;
+}
+.message_send_container{
+    float: right;
+    width: 40%;
+    padding: 7px 40px 7px 7px;
+    background: rgb(8, 97, 156);
+    color: white;
+    font-size: 18px;
+    border-radius: 5px 0px 40px 5px;
+    overflow-wrap: break-word;
+    margin-bottom: 5px;
+}
+.input_message_field_container{
+    width: 100%;
+    background: rgb(184, 184, 184);
+    padding: 10px 0px 20px 0px;
+    position: fixed;
+    bottom: 0px;
+}
+.input_message_field{
+    width: 96%;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0px 0px 10px black;
+}
+.reciever_arrow{
+    position: relative;
+    left: 60px;
+    top: -21px;
+    z-index: -1;
+    border: solid;
+    display: inline;
+    border-width: 0px 15px 15px 0px;
+    border-color: transparent rgb(209, 208, 208) transparent transparent;
+}
+.sender_name_container{
+    position: relative;
+    left: 47px;
+    top: 15px;
+    color: black;
+    display: inline;
+    box-shadow: 0px 0px 2px rgb(143, 141, 141);
+    padding: 2px 5px;
+    z-index: -1;
+}
+.cont{
+    clear: both;
+    margin-right: 5px;
+}
+.frame{
+    margin-bottom: 20px;
+}
+.username_error_container{
+    background: rgb(255, 10, 112);
+    margin-top: 25px;
+    width: 200px;
+    padding: 5px 20px;
+    display: none;
+}
+.logout{
+    float: right;
+    margin-right: 10px;
+}
+.logout_btn{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 20px;
+    margin-top: 4px;
+    border: none;
+    cursor: pointer;
+    background: rgb(0, 128, 68);
+    color: white;
+    border-radius: 2px;
+}
+.logout_btn:hover{
+    background: rgb(4, 83, 46);
+}
+
+::-webkit-scrollbar{
+    width:9px;
+    height:9px;
+}
+
+
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment{
+    display:none;
+    height:0;
+    background-color:black;
+}
+::-webkit-scrollbar-track{
+    background-color:black;
+    -webkit-border-radius:0;
+}
+::-webkit-scrollbar-thumb:vertical{
+    height:50px;background-color:#645d5d;
+    -webkit-border-radius:8px;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    width:50px;background-color:#645d5d;
+    -webkit-border-radius:8px;
+}
